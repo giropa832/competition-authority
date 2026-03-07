@@ -1,0 +1,45 @@
+{
+  "name": "competition-authority",
+  "version": "2.0.0",
+  "description": "Competition Authority (CA) algorithm for scoring Extra Virgin Olive Oils based on international competition results",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "olive-oil",
+    "evoo",
+    "ranking",
+    "competition",
+    "scoring",
+    "authority"
+  ],
+  "author": "Molino y Cata <info@molinoycata.com> (https://molinoycata.com)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/giropa832/competition-authority"
+  },
+  "homepage": "https://molinoycata.com/ranking/methodology",
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  }
+}
