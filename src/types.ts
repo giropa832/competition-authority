@@ -90,6 +90,7 @@ export interface CompetitionAuthority {
 export interface MedalBreakdown {
   competitionId: string;
   competitionName: string;
+  season: string;
   medalLevel: MedalLevel | null;
   pm: number;
   ac: number;

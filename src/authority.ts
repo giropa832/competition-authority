@@ -310,7 +310,8 @@ export function calculateEvooScore(
   evoo: Evoo,
   authorities: CompetitionAuthority[],
   competitions: Competition[],
-  distributions: Map<string, number[]> // key: "competitionId:season"
+  distributions: Map<string, number[]>, // key: "competitionId:season"
+  season?: string // optional: filter results to a single season
 ): {
   score: number;
   scoreNE: number;
@@ -352,7 +353,11 @@ export function calculateEvooScore(
     }
   }
 
-  for (const result of evoo.results) {
+  const resultsToScore = season
+    ? evoo.results.filter((r) => r.season === season)
+    : evoo.results;
+
+  for (const result of resultsToScore) {
     // Find authority: first exact match competitionId:season, then fallback by competitionId
     const authKey = `${result.competition}:${result.season}`;
     const auth = authExactMap.get(authKey) ?? authFallbackMap.get(result.competition);
@@ -383,6 +388,7 @@ export function calculateEvooScore(
     breakdown.push({
       competitionId: result.competition,
       competitionName: comp.name,
+      season: result.season,
       medalLevel,
       pm,
       ac,
@@ -423,12 +429,13 @@ export function buildRanking(
   evoos: Evoo[],
   authorities: CompetitionAuthority[],
   competitions: Competition[],
-  distributions: Map<string, number[]>
+  distributions: Map<string, number[]>,
+  season?: string
 ): RankedEvoo[] {
   const scored = evoos
     .map((evoo) => {
       const { score, scoreNE, scoreAuxiliar, medalCount, breakdown } =
-        calculateEvooScore(evoo, authorities, competitions, distributions);
+        calculateEvooScore(evoo, authorities, competitions, distributions, season);
       return {
         ...evoo,
         score,
@@ -465,15 +472,16 @@ export function scoreAllEvoos(
   evoos: Evoo[],
   authorities: CompetitionAuthority[],
   competitions: Competition[],
-  distributions: Map<string, number[]>
+  distributions: Map<string, number[]>,
+  season?: string
 ): RankedEvoo[] {
-  const globalRanking = buildRanking(evoos, authorities, competitions, distributions);
+  const globalRanking = buildRanking(evoos, authorities, competitions, distributions, season);
   const globalPositionMap = new Map(globalRanking.map((a) => [a.id, a.position]));
 
   return evoos
     .map((evoo) => {
       const { score, scoreNE, scoreAuxiliar, medalCount, breakdown } =
-        calculateEvooScore(evoo, authorities, competitions, distributions);
+        calculateEvooScore(evoo, authorities, competitions, distributions, season);
       return {
         ...evoo,
         score,

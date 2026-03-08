@@ -1,6 +1,6 @@
 {
-  "name": "competition-authority",
-  "version": "2.0.0",
+  "name": "@molinoycata/competition-authority",
+  "version": "2.1.0",
   "description": "Competition Authority (CA) algorithm for scoring Extra Virgin Olive Oils based on international competition results",
   "type": "module",
   "main": "dist/index.js",
