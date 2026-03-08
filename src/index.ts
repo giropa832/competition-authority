@@ -16,7 +16,7 @@ export type {
   CountryRankedEvoo,
   VarietyRankedEvoo,
   CategoryRankedEvoo,
-} from "./types";
+} from "./types.js";
 
 // Algorithm
 export {
@@ -46,4 +46,4 @@ export {
   buildCountryRanking,
   buildVarietyRanking,
   buildCategoryRanking,
-} from "./authority";
+} from "./authority.js";

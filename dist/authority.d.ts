@@ -14,7 +14,7 @@
  *
  * @see https://molinoycata.com/ranking/methodology
  */
-import type { CompetitionAuthorityDimensions, CompetitionCategory, CompetitionTier, CompetitionAuthority, CompetitionResult, Competition, MedalLevel, MedalBreakdown, Evoo, RankedEvoo, CountryRankedEvoo, VarietyRankedEvoo, CategoryRankedEvoo } from "./types";
+import type { CompetitionAuthorityDimensions, CompetitionCategory, CompetitionTier, CompetitionAuthority, CompetitionResult, Competition, MedalLevel, MedalBreakdown, Evoo, RankedEvoo, CountryRankedEvoo, VarietyRankedEvoo, CategoryRankedEvoo } from "./types.js";
 /** Medal points by award type (for award-based competitions) */
 export declare const PM_MAP: Record<MedalLevel, number>;
 /** Mapping from existing AwardLevel to MedalLevel */

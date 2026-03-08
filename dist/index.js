@@ -15,5 +15,5 @@ resolvePM,
 // Scoring
 calculateEvooScore, 
 // Ranking builders
-buildRanking, scoreAllEvoos, buildCountryRanking, buildVarietyRanking, buildCategoryRanking, } from "./authority";
+buildRanking, scoreAllEvoos, buildCountryRanking, buildVarietyRanking, buildCategoryRanking, } from "./authority.js";
 //# sourceMappingURL=index.js.map

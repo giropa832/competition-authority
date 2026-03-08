@@ -29,7 +29,7 @@ import type {
   CountryRankedEvoo,
   VarietyRankedEvoo,
   CategoryRankedEvoo,
-} from "./types";
+} from "./types.js";
 
 // ---- Internal utilities ----
 
